@@ -12,40 +12,48 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Style-2.5D%20Chibi%20Anime-ff69b4.svg" alt="Style" />
   <img src="https://img.shields.io/badge/Assets-PNG%20%7C%20ICO-8a2be2.svg" alt="Assets" />
+  <a href="https://github.com/Love-Neko/MoeDock/actions/workflows/ci.yml"><img src="https://github.com/Love-Neko/MoeDock/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="https://github.com/Love-Neko/MoeDock/releases"><img src="https://img.shields.io/badge/Download-Release%20Pack-orange.svg" alt="Download" /></a>
   <img src="https://img.shields.io/badge/Python-3.9%2B-3776ab.svg" alt="Python" />
-  <img src="https://img.shields.io/badge/Preview-Offline-22c55e.svg" alt="Preview" />
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License" /></a>
 </p>
 
 ---
 
 ## 📖 什么是 MoeDock？
 
-**MoeDock（萌坞）** 是一套面向桌面 Dock 和应用启动器的二次元图标资源与生产工作流。它将软件品牌的颜色、符号和气质转译成更有角色感的卡通图标，同时保留小尺寸下清晰、易认、耐看的轮廓。
+**MoeDock（萌坞）** 是一套面向桌面 Dock 和应用启动器的二次元拟人化图标资源与生产工作流。它将软件品牌的经典颜色、视觉符号与气质转译成极具角色感的二次元萌系图标，同时严格保证小尺寸下清晰、易认、耐看的轮廓辨识度。
 
-项目包含高清透明 PNG、Windows 原生多尺寸 ICO、交互式网页预览，以及去背景、格式转换和预览页更新脚本。你可以直接使用现成图标，也可以把它当作自己的图标生产模板。
+项目包含高清透明底 PNG、Windows 原生 256~16px 多层级 ICO、单文件离线交互式网页预览，以及一键抠图、格式封装与自动化生产流水线。你可以直接使用现成的图标包，也可以将本仓库作为 AI 智能体的 **Skill**，随时定制任意专属软件图标！
 
 ## ✨ 核心特色
 
-- **品牌色优先**：用主色块和轮廓保持软件辨识度
-- **道具拟人化**：将 Logo 转成角色服装、装备或互动道具
-- **透明底输出**：适合深色、浅色和半透明 Dock 背景
-- **多尺寸 ICO**：一次生成 16、32、48、64、128、256 px 图层
-- **本地交互预览**：无需部署服务，双击 HTML 即可查看悬停放大效果
-- **可复用脚本**：支持从原图到 PNG、ICO、预览页的分步处理
+- **品牌色优先（70% 锚定）**：严格提炼官方品牌色作为发色与服饰主色，小图标秒认软件
+- **道具拟人化**：将官方 Logo 转译成可互动的 3D 实体装备、坐骑或手持工具
+- **纯净透明底**：BFS 抗锯齿边缘羽化，支持内部闭合孔洞透空与可选 2px 贴纸微白边
+- **原生多尺寸 ICO**：单文件打包完整封装 16、32、48、64、128、256 px 全部层级
+- **本地 macOS 级交互预览**：无需服务环境，双击 HTML 即可体验真实物理悬停放大手感与多壁纸检验
+- **一键全自动生产流水线**：单条命令打通 `生图去白底 -> 封装 ICO -> 热刷新预览`
 
 ## 🧭 项目结构
 
 ```text
 MoeDock/
 ├─ 例图/
-│  ├─ PNG图标/          # 高清透明 PNG 素材
-│  └─ ICO图标/          # 多尺寸 Windows ICO 素材
-├─ dock_preview.html    # 图库与 Dock 动效预览台
-├─ 图标预览.gif         # 快速浏览项目效果
-├─ scripts/             # 去背景、转 ICO、更新预览页
-├─ references/          # 色卡与提示词参考
-├─ examples/            # 工作流示例
-└─ tests/               # 基础流程测试
+│  ├─ PNG图标/          # 高清透明 PNG 素材 (4K / RGBA)
+│  └─ ICO图标/          # Windows 256~16px 多层级原生 ICO
+├─ dock_preview.html    # 离线单文件交互动效预览台（含实时搜索）
+├─ 图标预览.gif         # 效果动态展示
+├─ preview.gif          # 英文别名动图
+├─ scripts/             # 一键总装管线、去背、转 ICO、更新预览页
+│  ├─ pipeline.py       # 🚀 一键端到端全自动总装脚本
+│  ├─ remove_bg.py      # 抗锯齿去白底（支持 seeds 与贴纸白边）
+│  ├─ convert_ico.py    # 单文件/目录自适应多尺寸 ICO 打包器
+│  ├─ update_preview.py # 本地预览页生成器（内置离线样式兜底）
+│  └─ build_release.py  # GitHub Release 发布包一键打包工具
+├─ references/          # 品牌色卡库 (color_palette.md) 与提示词库
+├─ examples/            # 实战工作流指南
+└─ tests/               # 自动化回归单元测试集
 ```
 
 ## ⚡ 快速开始
@@ -58,59 +66,91 @@ cd MoeDock
 pip install -r requirements.txt
 ```
 
-### 2. 打开预览台
+> 💡 **不想运行代码？** 前往 [GitHub Releases](https://github.com/Love-Neko/MoeDock/releases) 页面，可直接下载打包好的所有高清 PNG 与 ICO 图标包！
 
-直接双击 `dock_preview.html`。页面支持图库浏览、壁纸切换，以及 Dock 图标的平滑悬停缩放。
+### 2. 打开交互式预览台
 
-### 3. 使用生产脚本
+直接在浏览器中双击打开 `dock_preview.html`。页面支持：
+* 🎨 **多壁纸切换**：支持极夜黑、深邃紫、霞光红、浅色壁纸实时检查透底与对比度；
+* 🔍 **即时搜索过滤**：顶部搜索框秒级定位目标应用；
+* 🌊 **macOS 物理悬停**：还原真机级别的鼠标划过平滑缩放动效。
+
+### 3. 一键流水线总装（最简操作推荐）
+
+只要有一张 AI 生成的白底原图，一条命令即可自动完成 **去白底 + 居中方形扩展 + 封装 Windows 6尺寸 ICO + 热刷新预览台**：
 
 ```bash
-# 去除白底并导出透明 PNG
-python scripts/remove_bg.py -i input.jpg -o output.png
+python scripts/pipeline.py -i input.jpg -n Steam --png-dir ./例图/PNG图标 --ico-dir ./例图/ICO图标 -p ./dock_preview.html
+```
 
-# 将 PNG 封装为多尺寸 ICO
+#### 分步精细控制：
+```bash
+# 1. 去除白底并导出透明 PNG（支持容差与内孔穿透种子点）
+python scripts/remove_bg.py -i input.jpg -o output.png --tol 245 --seeds "150,200;300,400" --sticker 2
+
+# 2. 将 PNG 封装为多尺寸 ICO（单文件或文件夹自适应）
 python scripts/convert_ico.py -i output.png -o output.ico
 
-# 根据 PNG 图标目录更新交互式预览页
+# 3. 根据 PNG 图标目录更新交互式预览页
 python scripts/update_preview.py -i ./例图/PNG图标 -o ./dock_preview.html
 ```
 
-## 🎨 已收录图标
+---
 
-当前示例覆盖创作、开发、社交、影音和数字资产等常用软件：
+## 🤖 搭配 AI 智能体使用 (AI Agent Skill)
+
+MoeDock 不仅是图标包，更是专为 **ChatGPT**、**Claude** 与 **Antigravity** 优化的 **AI Skill 工作流**：
+
+* **ChatGPT (GPT-4o / DALL-E 3)**：将 `SKILL.md` 作为 Custom GPT 指令，调用专用防扩写模板直接生成纯白底原画，配合 Code Interpreter 沙箱运行 `pipeline.py` 一键打包下载。
+* **Claude (3.5 Sonnet)**：输入应用名称，Claude 会根据 `references/color_palette.md` 自动策划 3D 实体道具，并输出参数完备的 Midjourney v6 / SDXL 提示词；同时在右侧 **Artifacts** 窗口直接内嵌渲染 Dock 栏预览动效！
+* **Google Antigravity (AGY)**：内置智能体自动调用生图工具与本地 `pipeline.py`，全自动生成并落盘到指定磁盘。
+
+---
+
+## 🖥️ 如何应用到桌面与 Dock 栏
+
+* **Windows 桌面快捷方式**：右键快捷方式 -> `属性` -> `快捷方式` -> `更改图标` -> 浏览选中 `例图/ICO图标/` 下对应的 `.ico` 文件。
+* **MyDockFinder / BitDock 栏**：右键 Dock 上的应用图标 -> `图标设置` -> 直接拖入 `例图/PNG图标/` 下对应的透明 `.png`。
+* **macOS Dock**：在访达中找到应用程序 -> 按 `Cmd + I` 打开简介 -> 将 `.png` 拖拽到左上角的小图标区域即可完成替换。
+
+---
+
+## 🎨 已收录图标示例
+
+当前已覆盖创作、开发、社交、影音和数字资产等高频软件：
 
 | 分类 | 图标示例 |
 | --- | --- |
-| Adobe 创作 | Photoshop、Premiere、After Effects、Illustrator、Lightroom、Media Encoder |
-| 创作与开发 | Blender、DaVinci Resolve、VS Code |
-| 社交与网络 | Google、Google Chrome、Telegram、微信、QQ、Clash Verge |
-| 娱乐与资产 | Steam、OKX |
+| **Adobe 创意全家桶** | Photoshop (Ps)、Premiere (Pr)、After Effects (Ae)、Illustrator (Ai)、Lightroom (Lr)、Media Encoder (Me) |
+| **开发与生产力** | Blender、DaVinci Resolve、VS Code、GitHub、Windows Terminal / PowerShell |
+| **社交与网络** | Google Chrome、Google、Microsoft Edge、Telegram、微信、QQ、Discord、Clash Verge |
+| **娱乐、资产与笔记** | Steam、Spotify、OKX (欧易)、Notion / Obsidian |
 
-更多颜色和设计思路见 [`references/color_palette.md`](./references/color_palette.md)。
+完整颜色代码与道具设计灵感请查阅 [`references/color_palette.md`](./references/color_palette.md)。
 
-### 🖼️ 图标小样
+### 🖼️ 部分小样展示
 
 <p align="center">
-  <img src="./例图/PNG图标/Photoshop.png" alt="Photoshop" width="96" />
-  <img src="./例图/PNG图标/Blender.png" alt="Blender" width="96" />
-  <img src="./例图/PNG图标/Steam.png" alt="Steam" width="96" />
-  <img src="./例图/PNG图标/Telegram.png" alt="Telegram" width="96" />
-  <img src="./例图/PNG图标/VSCode.png" alt="VS Code" width="96" />
-  <img src="./例图/PNG图标/微信.png" alt="微信" width="96" />
+  <img src="./例图/PNG图标/Photoshop.png" alt="Photoshop" width="80" />
+  <img src="./例图/PNG图标/Blender.png" alt="Blender" width="80" />
+  <img src="./例图/PNG图标/Steam.png" alt="Steam" width="80" />
+  <img src="./例图/PNG图标/Google Chrome.png" alt="Google Chrome" width="80" />
+  <img src="./例图/PNG图标/Telegram.png" alt="Telegram" width="80" />
+  <img src="./例图/PNG图标/VSCode.png" alt="VS Code" width="80" />
+  <img src="./例图/PNG图标/微信.png" alt="微信" width="80" />
+  <img src="./例图/PNG图标/QQ.png" alt="QQ" width="80" />
+  <img src="./例图/PNG图标/clash-verge.png" alt="Clash Verge" width="80" />
+  <img src="./例图/PNG图标/OKX.png" alt="OKX" width="80" />
 </p>
 
-## 🖥️ 预览体验
+---
 
-预览台围绕 Dock 使用场景做了三点优化：
+## 🤝 需求征集与社区贡献
 
-1. **悬停放大**：中心图标放大，左右图标同步退让，保持节奏感
-2. **玻璃质感**：半透明容器、柔和阴影和多种背景方便检查对比度
-3. **小尺寸检验**：图库卡片帮助快速确认图标在常见尺寸下是否清晰
-
-## 🤝 贡献与反馈
-
-欢迎提交 Issue 或 Pull Request，补充新的软件色卡、图标方案和处理脚本。提交素材时请尽量说明来源、授权范围和推荐使用场景。
+- 💡 **想为某个软件定制二次元图标？** 欢迎前往 [Issues 提交定制需求 (Icon Request)](https://github.com/Love-Neko/MoeDock/issues/new?template=icon_request.yml)，我们将优先排期策划！
+- 🛠️ 欢迎提交 Pull Request 扩充 `references/color_palette.md` 或优化批处理脚本。
 
 ## 📄 许可与素材说明
 
-脚本和示例代码采用 MIT License。图标及品牌标识的版权归其原作者或对应品牌所有；本项目主要用于个人桌面美化、学习和设计展示，请在遵循相关授权条款的前提下使用。
+本项目开源代码采用 [MIT License](./LICENSE) 协议。图标及品牌标识归属于原商标持有者与创作者；本项目旨在个人桌面美化、设计学习与智能体工作流研究展示，请在遵守相关品牌条款的前提下使用。
+

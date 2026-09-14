@@ -1,0 +1,28 @@
+name: "🐛 问题与缺陷报告 (Bug Report)"
+description: 提交脚本运行报错、抠图边缘异常或格式问题
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述 (Description)
+      description: 遇到的错误信息、异常现象或不期望的结果
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 运行环境 (Environment)
+      description: 操作系统版本与 Python 版本
+      placeholder: 例如：Windows 11 / Python 3.12 / Pillow 10.0
+    validations:
+      required: true
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: 复现命令或步骤 (Steps to Reproduce)
+      description: 执行了什么命令导致该报错
+      placeholder: 例如：python scripts/remove_bg.py -i test.png -o out.png
+    validations:
+      required: false

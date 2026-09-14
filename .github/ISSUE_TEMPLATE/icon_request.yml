@@ -1,0 +1,33 @@
+name: "🎨 图标定制征集 (Icon Request)"
+description: 提交您希望收录的应用图标与拟人化创意构想
+title: "[Icon Request]: "
+labels: ["enhancement", "icon-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢为 MoeDock 提出新的应用图标创意！请尽量提供该应用的官方主色及特色道具，以便快速策划生图。
+  - type: input
+    id: app_name
+    attributes:
+      label: 软件名称 (Application Name)
+      description: 软件全称与官方英文简称（如 NetEase CloudMusic / 网易云音乐）
+      placeholder: 例如：Figma / 网易云音乐 / Typora
+    validations:
+      required: true
+  - type: input
+    id: brand_color
+    attributes:
+      label: 官方品牌主色 (Brand Color Hex)
+      description: 该软件官方最具代表性的颜色（可附带十六进制色值）
+      placeholder: 例如：#C20C0C (网易云红) 或 #FB7299 (B站粉)
+    validations:
+      required: true
+  - type: textarea
+    id: prop_idea
+    attributes:
+      label: 3D 实体道具与角色构思 (Visual Motif & Character Concept)
+      description: 您希望角色手持或互动的 3D 实体标志道具（如黑胶唱片、小电视机甲、魔法书）
+      placeholder: 例如：耳机短发萌娘坐在复古发光黑胶唱片旋转底盘上，怀抱迷你留声机
+    validations:
+      required: false
