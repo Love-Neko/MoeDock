@@ -25,7 +25,7 @@ anime-dock-icon/
 │   ├── convert_ico.py                # Windows 多尺寸高清 .ico 打包转换脚本（单文件/批量双模）
 │   └── update_preview.py             # 生成/热更新本地交互式 Dock 预览网页（离线兜底+搜索）
 ├── references/
-│   ├── prompt_cheatsheet.md          # 标准化中英文生图提示词工程模板与修饰词库（含 DALL-E/MJ/SD 专项）
+│   ├── prompt_cheatsheet.md          # 标准化中英文生图提示词工程模板与修饰词库
 │   └── color_palette.md              # 常用软件品牌专属色卡（HEX）与核心视觉符号表（已扩展）
 ├── examples/
 │   └── workflow_example.md           # 完整端到端制作实战案例（以 Photoshop 与 Blender 为例）
@@ -49,14 +49,16 @@ python -m pip install -r requirements.txt
 
 ## 🌐 三大 AI 平台协同与执行矩阵 (Platform Matrix)
 
-本 Skill 支持在 **ChatGPT**、**Antigravity** 和 **Claude** 中无缝切换使用。各平台的定位与最佳实践如下：
+本 Skill 可用于具备图像生成、文本生成或本地代码执行能力的 AI 宿主。各平台的具体能力以当前环境为准：
 
-| 平台维度 | ChatGPT (GPT-4o / DALL-E 3) | Google Antigravity (AGY) | Claude (3.5 Sonnet / Claude Desktop) |
+| 平台维度 | 对话式图像生成平台 | 支持本地执行的智能体环境 | 可生成提示词和代码的文本模型环境 |
 | :--- | :--- | :--- | :--- |
-| **核心定位** | 对话生图 + Code Interpreter 沙箱打包 | 本地全自动端到端执行智能体 | 提示词超级架构师 + Artifacts 预览台 |
-| **生图方案** | DALL-E 3（需添加防扩写前缀与纯白底约束） | 内置 `generate_image` 工具（Imagen 模型） | 输出 Midjourney v6 / SDXL 专业参数提示词 |
-| **代码执行** | 在 Code Interpreter 中运行 `pipeline.py` 打包 ZIP 下载 | 本地直接调用 `run_command` 执行脚本落盘 | Claude Code/Desktop MCP 本地执行，或提供命令供用户终端运行 |
-| **结果呈现** | 输出生成的透明 PNG 与 ICO 文件的下载链接 | 直接写入目标盘符并自动热刷新本地网页 | 右侧 **Artifacts** 窗口直接内嵌交互式渲染 Dock 动效 |
+| **核心定位** | 生成图像并配合本地脚本处理 | 端到端运行脚本并写入项目目录 | 设计提示词、审查结果并给出命令 |
+| **生图方案** | 使用宿主实际提供的图像模型与参数 | 使用宿主实际提供的图像工具 | 输出适配目标图像平台的提示词 |
+| **代码执行** | 若宿主支持则运行 `pipeline.py` | 直接运行 Python 脚本 | 由用户或连接的开发工具执行脚本 |
+| **结果呈现** | 展示 PNG、ICO 和本地预览页 | 写入目标目录并刷新预览页 | 以内嵌预览或本地浏览器查看结果 |
+
+> 具体模型、图像工具和代码执行能力以当前宿主平台实际提供的工具为准；本 Skill 不要求某个固定模型或工具名称。
 
 ---
 
@@ -89,9 +91,9 @@ python -m pip install -r requirements.txt
 
 ### 第二步：生成专业英文生图 Prompt
 1. 查阅 [prompt_cheatsheet.md](./references/prompt_cheatsheet.md) 选择对应平台的专用模板：
-   - **ChatGPT 用户**：使用带防扩写与 `#FFFFFF` 强制纯白底的前缀。
-   - **Claude 用户**：获取带 `--no background, floor shadow` 的 Midjourney 提示词。
-   - **Antigravity**：调用内置 `generate_image` 工具生成 1:1 图像。
+   - **图像生成平台**：使用带防扩写与 `#FFFFFF` 强制纯白底的前缀。
+   - **提示词模型**：获取适配目标平台的参数与负面约束。
+   - **本地智能体**：调用当前环境可用的图像工具并生成 1:1 图像。
 
 ### 第三步：一键流水线总装 (推荐)
 只需一条命令，自动完成背景抠图、多层级 ICO 打包并热更新预览台：
@@ -123,7 +125,7 @@ python scripts/pipeline.py --input raw_icon.jpg --name Chrome --png-dir ./PNG --
 
 * **刷新本地交互式 Dock 预览台**：
   ```bash
-  python scripts/update_preview.py --input-dir ./PNG --output ./dock_preview.html
+  python scripts/update_preview.py --input ./PNG --output ./dock_preview.html
   ```
 
 ---

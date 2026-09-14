@@ -19,9 +19,9 @@ python scripts/remove_bg.py --input raw_photoshop.jpg --output Photoshop.png
 
 ### 阶段四：打包 Windows 高清 ICO 图标
 ```bash
-python scripts/convert_ico.py --input-dir . --output-dir ./ICO
+python scripts/convert_ico.py --input ./PNG --output ./ICO
 ```
 *生成包含从 16x16 到 256x256 多尺寸的高清 `Photoshop.ico`。*
 
 ### 阶段五：在 Dock 栏与动效预览台中实测
-运行 `python scripts/update_preview.py --input-dir . --output ./dock_preview.html` 并双击打开 `dock_preview.html`，切换浅色和深色壁纸，检查在深浅底下的边缘纯净度与色彩表现。
+运行 `python scripts/update_preview.py --input ./PNG --output ./dock_preview.html` 并双击打开 `dock_preview.html`，切换浅色和深色壁纸，检查在深浅底下的边缘纯净度与色彩表现。
