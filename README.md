@@ -101,9 +101,9 @@ python scripts/update_preview.py -i ./例图/PNG图标 -o ./dock_preview.html
 
 MoeDock 不仅是图标包，更是专为 **ChatGPT**、**Claude** 与 **Antigravity** 优化的 **AI Skill 工作流**：
 
-* **ChatGPT (GPT-4o / DALL-E 3)**：将 `SKILL.md` 作为 Custom GPT 指令，调用专用防扩写模板直接生成纯白底原画，配合 Code Interpreter 沙箱运行 `pipeline.py` 一键打包下载。
-* **Claude (3.5 Sonnet)**：输入应用名称，Claude 会根据 `references/color_palette.md` 自动策划 3D 实体道具，并输出参数完备的 Midjourney v6 / SDXL 提示词；同时在右侧 **Artifacts** 窗口直接内嵌渲染 Dock 栏预览动效！
-* **Google Antigravity (AGY)**：内置智能体自动调用生图工具与本地 `pipeline.py`，全自动生成并落盘到指定磁盘。
+* **ChatGPT ：将 `SKILL.md` 作为 Custom GPT 指令，调用专用防扩写模板直接生成纯白底原画，配合 Code Interpreter 沙箱运行 `pipeline.py` 一键打包下载。
+* **Claude：输入应用名称，Claude 会根据 `references/color_palette.md` 自动策划 3D 实体道具，并输出参数完备的 Midjourney v6 / SDXL 提示词；同时在右侧 **Artifacts** 窗口直接内嵌渲染 Dock 栏预览动效！
+* **Google Antigravity ：内置智能体自动调用生图工具与本地 `pipeline.py`，全自动生成并落盘到指定磁盘。
 
 ---
 
