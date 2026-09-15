@@ -1,4 +1,4 @@
-# 🎨 MoeDock 萌坞 · 二次元卡通拟人 Dock 栏图标生产工坊
+# 🎨 MoeDock 萌坞 · 二次元卡通拟人 Dock 栏图标生产工坊Skill技能
 
 <p align="center">
   <img src="./图标预览.gif" alt="MoeDock 图标预览" width="100%" />
@@ -22,7 +22,7 @@
 
 ## 📖 什么是 MoeDock？
 
-**MoeDock（萌坞）** 是一套面向桌面 Dock 和应用启动器的二次元拟人化图标资源与生产工作流。它将软件品牌的经典颜色、视觉符号与气质转译成极具角色感的二次元萌系图标，同时严格保证小尺寸下清晰、易认、耐看的轮廓辨识度。
+**MoeDock（萌坞）** 是一套面向桌面 Dock 和应用启动器的二次元拟人化图标资源与生产工作流Skill。它将软件品牌的经典颜色、视觉符号与气质转译成极具角色感的二次元萌系图标，同时严格保证小尺寸下清晰、易认、耐看的轮廓辨识度。
 
 项目包含高清透明底 PNG、Windows 原生 256~16px 多层级 ICO、单文件离线交互式网页预览，以及一键抠图、格式封装与自动化生产流水线。你可以直接使用现成的图标包，也可以将本仓库作为 AI 智能体的 **Skill**，随时定制任意专属软件图标！
 
@@ -99,7 +99,7 @@ python scripts/update_preview.py -i ./例图/PNG图标 -o ./dock_preview.html
 
 ## 🤖 搭配 AI 智能体使用 (AI Agent Skill)
 
-MoeDock 不仅是图标包，更是专为 **ChatGPT**、**Claude** 与 **Antigravity** 优化的 **AI Skill 工作流**：
+MoeDock 不仅是图标包，更是专为 **ChatGPT**、**Claude** 与 **Antigravity** 优化的 **AI Skill 工作流Skill**：
 
 * **ChatGPT ：将 `SKILL.md` 作为 Custom GPT 指令，调用专用防扩写模板直接生成纯白底原画，配合 Code Interpreter 沙箱运行 `pipeline.py` 一键打包下载。
 * **Claude：输入应用名称，Claude 会根据 `references/color_palette.md` 自动策划 3D 实体道具，并输出参数完备的 Midjourney v6 / SDXL 提示词；同时在右侧 **Artifacts** 窗口直接内嵌渲染 Dock 栏预览动效！
@@ -107,7 +107,7 @@ MoeDock 不仅是图标包，更是专为 **ChatGPT**、**Claude** 与 **Antigra
 
 ---
 
-## 🖥️ 如何应用到桌面与 Dock 栏
+## 🖥️ 如何应用到桌面
 
 * **Windows 桌面快捷方式**：右键快捷方式 -> `属性` -> `快捷方式` -> `更改图标` -> 浏览选中 `例图/ICO图标/` 下对应的 `.ico` 文件。
 * **MyDockFinder / BitDock 栏**：右键 Dock 上的应用图标 -> `图标设置` -> 直接拖入 `例图/PNG图标/` 下对应的透明 `.png`。
