@@ -83,8 +83,9 @@ pip install -r requirements.txt
 
 ### 3. 一键流水线总装（最简操作推荐）
 
-只要有一张 AI 生成的白底原图，一条命令即可自动完成 **去白底 + 居中方形扩展 + 封装 Windows 6尺寸 ICO + 热刷新预览台**：
-制作二次元卡通拟人图标请: 使用 anime-dock-icon 技能，为我的 [软件名] 设计并制作一套二次元卡通 Dock 图标
+只要有一张 AI 生成的白底原图，一条命令即可自动完成 **去白底 + 居中方形扩展 + 封装 Windows 6尺寸 ICO + 热刷新预览台**
+
+制作二次元卡通拟人图标: 使用 anime-dock-icon 技能，为我的 [软件名] 设计并制作一套二次元卡通 Dock 图标
 
 ```bash
 python scripts/pipeline.py -i input.jpg -n Steam --png-dir ./例图/PNG图标 --ico-dir ./例图/ICO图标 -p ./dock_preview.html
