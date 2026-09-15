@@ -18,6 +18,12 @@
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License" /></a>
 </p>
 
+<p align="center">
+  <a href="./README.md">简体中文</a> ·
+  <a href="./README.en.md">English</a> ·
+  <a href="./README.ja.md">日本語</a>
+</p>
+
 ---
 
 ## 📖 什么是 MoeDock？
